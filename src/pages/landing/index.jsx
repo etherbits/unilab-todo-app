@@ -1,11 +1,14 @@
 import React from 'react'
 import styles from './styles.module.css'
+import TitleContent from 'components/Landing/TitleContent'
+import LandingButton from 'components/Landing/LandingButton'
+const transitionDuration = 0.5
 
 const LandingPage = () => {
     return (
         <main className={styles['page']}>
-            <h1>Keep Track Of Daily Task In Life</h1>
-            <button>Get Started</button>
+            <TitleContent transitionDuration={transitionDuration} />
+            <LandingButton transitionDuration={transitionDuration} />
         </main>
     )
 }

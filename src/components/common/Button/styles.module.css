@@ -1,0 +1,15 @@
+.button {
+    background-color: #5efc8d;
+    color: #000;
+    border: none;
+    padding: 1rem 3.5rem;
+    font-size: 3rem;
+    font-family: 'poppins';
+    font-weight: 300;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #80ffaf;
+}

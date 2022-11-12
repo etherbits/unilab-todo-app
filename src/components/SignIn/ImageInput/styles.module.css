@@ -1,0 +1,39 @@
+.input-label {
+    text-align: center;
+    font-size: 1.375rem;
+    cursor: pointer;
+}
+
+.image-container {
+    margin-top: 1rem;
+    position: relative;
+    border-radius: 50%;
+    background-color: #e6ebff;
+    width: 122px;
+    height: 122px;
+    overflow: hidden;
+}
+
+.camera-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transition: 250ms;
+}
+
+.input-label:hover .camera-icon {
+    fill: #5efc8d;
+}
+
+.uploaded-img {
+    width: 100%;
+    height: 100%;
+}
+
+.file-input {
+    position: absolute;
+    height: 0;
+    width: 0;
+    opacity: 0;
+}

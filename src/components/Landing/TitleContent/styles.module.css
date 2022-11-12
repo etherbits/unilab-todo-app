@@ -1,0 +1,26 @@
+.title-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: clamp(1rem, calc(1rem + 0.75vw), 3rem);
+}
+
+.img {
+    width: clamp(65px, calc(60px + 2.2vw), 90px);
+}
+
+.title {
+    color: white;
+    font-size: clamp(2rem, calc(2rem + 1.75vw), 3.375rem);
+    margin: 0;
+}
+
+.title ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.title li {
+    display: inline;
+}
