@@ -1,0 +1,42 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    padding: 2rem;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.title {
+    font-size: 2.625rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.add-todo-container {
+    display: flex;
+    width: 100%;
+}
+
+.add-todo-container input {
+    width: 100%;
+    font-size: 1.375rem;
+    border-radius: 4px 0px 0px 4px;
+}
+
+.add-todo-container button {
+    font-size: 2rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0px 4px 4px 0px;
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+}

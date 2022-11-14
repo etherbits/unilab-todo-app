@@ -1,36 +1,70 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ReactComponent as CameraSvg } from 'assets/camera.svg'
 import { motion } from 'framer-motion'
 import styles from './styles.module.css'
 
-const ImageInput = () => {
-    const [selectedImg, setSelectedImg] = useState(null)
+const MotionCameraSvg = motion(CameraSvg)
 
+const ImageInput = ({ selectedProfilePic, setProfilePic }) => {
     const handleUpload = (e) => {
         const img = e.target.files[0]
-        setSelectedImg(URL.createObjectURL(img))
+        if (!img) return
+
+        const reader = new FileReader()
+        reader.readAsDataURL(img)
+
+        reader.onload = () => {
+            setProfilePic(reader.result)
+        }
     }
-    // Todo: Research if I can use framer motion with custom components
+
+    const motionVariant = {
+        rest: {
+            fill: selectedProfilePic ? '#00000000' : '#000',
+            transition: {
+                duration: 0.1,
+                type: 'tween',
+                ease: 'easeOut',
+            },
+        },
+        hover: {
+            fill: '#5efc8d',
+            transition: {
+                duration: 0.1,
+                type: 'tween',
+                ease: 'easeIn',
+            },
+        },
+    }
+
     return (
-        <React.Fragment>
-            <label className={styles['input-label']} htmlFor='userImage'>
+        <div>
+            <motion.label
+                initial={'rest'}
+                whileHover={'hover'}
+                animate='rest'
+                className={styles['input-label']}
+                htmlFor='userImage'
+            >
                 <span>add photo</span>
                 <div className={styles['image-container']}>
-                    <CameraSvg
+                    <MotionCameraSvg
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        variants={motionVariant}
                         className={styles['camera-icon']}
-                        fill={selectedImg ? 'rgba(0,0,0,0)' : '#000'}
                     />
-                    {selectedImg && (
+                    {selectedProfilePic && (
                         <motion.img
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             className={styles['uploaded-img']}
-                            src={selectedImg}
+                            src={selectedProfilePic}
                             alt='User uploaded avatar or portrait'
                         />
                     )}
                 </div>
-            </label>
+            </motion.label>
             <input
                 className={styles['file-input']}
                 type={'file'}
@@ -40,7 +74,7 @@ const ImageInput = () => {
                 onChange={handleUpload}
                 required
             />
-        </React.Fragment>
+        </div>
     )
 }
 

@@ -22,10 +22,6 @@
     transition: 250ms;
 }
 
-.input-label:hover .camera-icon {
-    fill: #5efc8d;
-}
-
 .uploaded-img {
     width: 100%;
     height: 100%;

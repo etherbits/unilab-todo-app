@@ -1,0 +1,28 @@
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.label {
+    font-size: 1.375rem;
+}
+
+/* .input {
+    border: none;
+    background-color: #e6ebff;
+    width: 100%;
+    padding: 1.4rem 1rem;
+    font-size: 1.375rem;
+    border-radius: 4px;
+    color: #000000;
+    font-family: 'poppins';
+    box-sizing: border-box;
+}
+
+.input::placeholder {
+    opacity: 0.2;
+    color: #000;
+} */

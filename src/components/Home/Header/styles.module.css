@@ -1,0 +1,43 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    width: 100%;
+    box-sizing: border-box;
+    color: #fff;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 2.25rem;
+    font-weight: 800;
+    font-family: 'poppins';
+}
+
+.profile-container {
+    display: flex;
+    height: 100%;
+    gap: 1rem;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100%;
+}
+
+.name {
+    font-size: 1.375rem;
+}
+
+.logout {
+    cursor: pointer;
+    color: #eee;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    height: 100%;
+}
