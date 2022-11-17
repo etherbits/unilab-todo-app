@@ -1,5 +1,5 @@
-import TextInput from 'components/common/TextInput'
 import React from 'react'
+import TextInput from 'components/common/TextInput'
 import styles from './styles.module.css'
 
 const NameInput = ({ name, setName }) => {

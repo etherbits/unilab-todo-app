@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Button from 'components/common/Button'
-import ImageInput from '../ImageInput'
-import { motion, useAnimationControls } from 'framer-motion'
-import styles from './styles.module.css'
 import { UserContext } from 'context/UserContext'
+import { motion, useAnimationControls } from 'framer-motion'
+import ImageInput from '../ImageInput'
 import NameInput from '../NameInput'
+import { formVariants } from './animations'
+import styles from './styles.module.css'
 
 const SignInForm = () => {
     const [name, setName] = useState('')
@@ -16,19 +17,19 @@ const SignInForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await controls.start({ y: '-100%', opacity: 0 })
+        await controls.start('exiting')
         createUser(name, profilePic)
     }
 
     useEffect(() => {
-        controls.start({ y: 0, opacity: 1 })
+        controls.start('visible')
     }, [controls])
 
     return (
         <motion.form
-            initial={{ y: 100, opacity: 0 }}
+            initial={'hidden'}
             animate={controls}
-            exit={{ y: '-100%', opacity: 0 }}
+            variants={formVariants}
             className={styles['form']}
             onSubmit={handleSubmit}
         >
@@ -40,7 +41,7 @@ const SignInForm = () => {
             <NameInput setName={setName} name={name} />
             <Button
                 className={styles['button']}
-                type='submit'
+                type="submit"
                 disabled={!(name && profilePic) ? true : false}
             >
                 Sign In

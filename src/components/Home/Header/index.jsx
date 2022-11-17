@@ -1,57 +1,69 @@
 import React, { useContext } from 'react'
-import { motion } from 'framer-motion'
-import styles from './styles.module.css'
 import { UserContext } from 'context/UserContext'
+import { MotionConfig, motion } from 'framer-motion'
+import {
+    counterVariants,
+    headerVariants,
+    logoVariants,
+    logoutVariants,
+    profileContainerVariants,
+    textContainerVariants,
+    transition,
+} from './animations'
+import styles from './styles.module.css'
 
 const Header = () => {
     const { user, logout } = useContext(UserContext)
 
     return (
-        <motion.header
-            initial={{ height: '100vh', padding: '0' }}
-            animate={{ height: '100px', padding: '1rem 2rem' }}
-            className={styles['header']}
-        >
-            <motion.span
-                className={styles['logo']}
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.6 }}
+        <MotionConfig transition={transition}>
+            <motion.header
+                initial={'hidden'}
+                animate={'visible'}
+                variants={headerVariants}
+                className={styles['header']}
             >
-                TO DO
-            </motion.span>
-            <motion.span
-                className={styles['complete-todos']}
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.6 }}
-            >
-                completed todos: {user.completedTodoCount}
-            </motion.span>
-            <motion.div
-                className={styles['profile-container']}
-                initial={{ x: 20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.6 }}
-            >
+                <div className={styles['logo-container']}>
+                    <motion.div
+                        className={styles['logo']}
+                        variants={logoVariants}
+                    >
+                        TO DO
+                    </motion.div>
+                    <motion.span
+                        className={styles['complete-todos']}
+                        variants={counterVariants}
+                    >
+                        completed todos: {user.completedTodoCount}
+                    </motion.span>
+                </div>
                 <motion.div
-                    className={styles['text-container']}
-                    initial={{ x: 40 }}
-                    animate={{ x: 0 }}
-                    transition={{ delay: 0.6 }}
+                    className={styles['profile-container']}
+                    variants={profileContainerVariants}
                 >
-                    <span className={styles['name']}>{user.name}</span>
-                    <span className={styles['logout']} onClick={logout}>
-                        logout
-                    </span>
+                    <motion.div
+                        className={styles['text-container']}
+                        variants={textContainerVariants}
+                    >
+                        <span className={styles['name']}>{user.name}</span>
+                        <motion.span
+                            className={styles['logout']}
+                            animate={'resting'}
+                            whileHover={'hovered'}
+                            variants={logoutVariants}
+                            onClick={logout}
+                        >
+                            log out
+                        </motion.span>
+                    </motion.div>
+                    <img
+                        className={styles['profile-pic']}
+                        src={user.profilePic}
+                        alt="profile"
+                    />
                 </motion.div>
-                <img
-                    className={styles['profile-pic']}
-                    src={user.profilePic}
-                    alt='profile'
-                />
-            </motion.div>
-        </motion.header>
+            </motion.header>
+        </MotionConfig>
     )
 }
 

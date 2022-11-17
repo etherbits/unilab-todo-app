@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 export const UserContext = createContext()
 
@@ -19,7 +19,8 @@ const UserContextProvider = ({ children }) => {
     }
 
     const addTodo = (todo) => {
-        setUser({ ...user, todos: [...user.todos, todo] })
+        todo.isComplete = false
+        setUser({ ...user, todos: [todo, ...user.todos] })
     }
 
     const removeTodo = (index) => {
@@ -30,16 +31,10 @@ const UserContextProvider = ({ children }) => {
 
     const completeTodo = (index) => {
         const tempTodos = user.todos
-        const isTodoComplete = tempTodos[index].isComplete
-        let newTodoCount
+        let newTodoCount = user.completedTodoCount
 
-        if (isTodoComplete) {
-            tempTodos[index].isComplete = false
-            newTodoCount = user.completedTodoCount - 1
-        } else {
-            tempTodos[index].isComplete = true
-            newTodoCount = user.completedTodoCount + 1
-        }
+        tempTodos[index].isComplete ^= true
+        newTodoCount += tempTodos[index].isComplete ? 1 : -1
 
         setUser({
             ...user,
