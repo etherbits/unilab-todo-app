@@ -1,6 +1,5 @@
-import { timings } from 'transitionConfig.js'
-
-const { enterDuration, exitDuration } = timings.landing
+const enterDuration = 0.6
+const exitDuration = 0.3
 
 export const imgVariants = {
     hidden: {

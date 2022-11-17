@@ -1,20 +1,16 @@
-import { timings } from 'transitionConfig'
-
-const { enterDuration, exitDuration } = timings.landing
-
 export const buttonVariants = {
     hidden: {
         y: 35,
         opacity: 0,
         transition: {
-            duration: exitDuration,
+            duration: 0.3,
         },
     },
     visible: {
         y: 0,
         opacity: 1,
         transition: {
-            duration: enterDuration,
+            duration: 0.6,
         },
     },
 }
